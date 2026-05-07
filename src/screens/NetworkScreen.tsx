@@ -73,7 +73,7 @@ export function NetworkScreen() {
               className={cn(
                 "w-full text-left rounded-xl border px-6 py-5 transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-brand",
                 isActive
-                  ? "border-[rgba(86,69,212,0.35)] bg-brand-dim"
+                  ? "border-[rgba(86,69,212,0.0)] bg-brand-dim"
                   : "border-line bg-surface hover:bg-surface-2 hover:border-line-2",
               )}
             >
