@@ -1,6 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap");
 @import "tailwindcss";
 
+/* Tell Tailwind v4 where to scan for classes */
+@source "./**/*.{ts,tsx}";
+@source "../index.html";
+
 *,
 *::before,
 *::after {

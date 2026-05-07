@@ -181,10 +181,9 @@ export function Sidebar({ active, onNavigate, open, onClose }: SidebarProps) {
             </svg>
           </div>
           <div>
-            <p className="text-[14px] font-semibold text-[#ebebeb] leading-none">
+            <p className="text-[18px] font-semibold text-[#ebebeb] leading-none">
               sorokit
             </p>
-            <p className="text-[11px] text-[#555] mt-0.5">Stellar Dashboard</p>
           </div>
         </div>
 
