@@ -24,7 +24,7 @@ export function Dashboard() {
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
         <TopBar active={active} />
         <main className="flex-1 overflow-y-auto">
-          <div className="max-w-2xl mx-auto px-6 py-6">{SCREENS[active]}</div>
+          <div className="max-w-2xl mx-auto px-8 py-8">{SCREENS[active]}</div>
         </main>
       </div>
     </div>

@@ -44,21 +44,23 @@ export function NetworkScreen() {
   const { network, switchNetwork } = useSorokit();
 
   return (
-    <div className="space-y-4">
-      <div className="mb-6">
-        <h2 className="text-[15px] font-semibold text-[#ebebeb]">Network</h2>
-        <p className="text-[12px] text-[#555555] mt-1">
+    <div className="space-y-6">
+      <div>
+        <h2 className="text-[18px] font-semibold text-[#ebebeb] tracking-tight">
+          Network
+        </h2>
+        <p className="text-[13px] text-[#555555] mt-1.5">
           Switch between Stellar networks
         </p>
       </div>
 
       {/* Active network info */}
       {network && (
-        <div className="rounded-lg border border-[#2a2a2a] bg-[#141414] p-4 space-y-3">
-          <p className="text-[10px] font-semibold uppercase tracking-widest text-[#555555]">
+        <div className="rounded-xl border border-[#2a2a2a] bg-[#141414] p-5 space-y-4">
+          <p className="text-[11px] font-semibold uppercase tracking-widest text-[#444444]">
             Active Network
           </p>
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-2 gap-5">
             <InfoRow label="Name" value={network.name} />
             <InfoRow label="Passphrase" value={network.passphrase} mono />
             <InfoRow label="RPC URL" value={network.rpcUrl} mono />
@@ -68,7 +70,7 @@ export function NetworkScreen() {
       )}
 
       {/* Selector */}
-      <div className="space-y-2">
+      <div className="space-y-3">
         {NETWORKS.map((net) => {
           const isActive = network?.name === net.name;
           return (
@@ -76,26 +78,26 @@ export function NetworkScreen() {
               key={net.name}
               onClick={() => switchNetwork(net.name)}
               className={cn(
-                "w-full text-left rounded-lg border p-4 transition-colors cursor-pointer",
+                "w-full text-left rounded-xl border p-5 transition-colors cursor-pointer",
                 "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#5645d4]",
                 isActive
                   ? "border-[rgba(86,69,212,0.4)] bg-[rgba(86,69,212,0.05)]"
-                  : "border-[#2a2a2a] bg-[#141414] hover:bg-[#1c1c1c]",
+                  : "border-[#2a2a2a] bg-[#141414] hover:bg-[#1a1a1a]",
               )}
             >
               <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2.5">
+                <div className="flex items-center gap-3.5">
                   <span
                     className={cn(
-                      "w-2 h-2 rounded-full shrink-0",
+                      "w-2.5 h-2.5 rounded-full shrink-0",
                       net.dotClass,
                     )}
                   />
                   <div>
-                    <p className="text-[12px] font-medium text-[#ebebeb]">
+                    <p className="text-[14px] font-medium text-[#ebebeb]">
                       {net.label}
                     </p>
-                    <p className="text-[11px] text-[#555555] mt-0.5">
+                    <p className="text-[12px] text-[#555555] mt-0.5">
                       {net.description}
                     </p>
                   </div>
@@ -124,13 +126,13 @@ function InfoRow({
   mono?: boolean;
 }) {
   return (
-    <div className="flex flex-col gap-0.5">
-      <span className="text-[10px] font-semibold uppercase tracking-widest text-[#555555]">
+    <div className="flex flex-col gap-1">
+      <span className="text-[11px] font-semibold uppercase tracking-widest text-[#444444]">
         {label}
       </span>
       <span
         className={cn(
-          "text-[11px] text-[#999999] break-all",
+          "text-[12px] text-[#999999] break-all",
           mono && "font-mono",
         )}
       >

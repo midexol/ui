@@ -140,7 +140,7 @@ export function TransactionPanel() {
             </div>
           </div>
         ) : (
-          <form onSubmit={submit} className="space-y-3">
+          <form onSubmit={submit} className="space-y-4">
             <Input
               label="Destination"
               placeholder="G..."

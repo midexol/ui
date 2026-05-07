@@ -84,7 +84,7 @@ export function SorobanPanel() {
         <CardDescription>Call a Soroban smart contract method</CardDescription>
       </CardHeader>
       <CardContent>
-        <form onSubmit={invoke} className="space-y-3">
+        <form onSubmit={invoke} className="space-y-4">
           <Input
             label="Contract ID"
             placeholder="C..."
@@ -99,8 +99,8 @@ export function SorobanPanel() {
             onChange={(e) => setMethod(e.target.value)}
             disabled={state === "loading"}
           />
-          <div className="flex flex-col gap-1.5">
-            <label className="text-[11px] font-medium text-[#999999]">
+          <div className="flex flex-col gap-2">
+            <label className="text-[12px] font-medium text-[#999999]">
               Arguments (JSON array)
             </label>
             <textarea
@@ -109,7 +109,7 @@ export function SorobanPanel() {
               onChange={(e) => setArgs(e.target.value)}
               disabled={state === "loading"}
               rows={3}
-              className="w-full rounded-md border border-[#2a2a2a] bg-[#1c1c1c] px-3 py-2 text-[11px] font-mono text-[#ebebeb] placeholder:text-[#555555] outline-none focus:border-[#3d3d3d] focus:ring-1 focus:ring-[rgba(86,69,212,0.3)] transition-colors resize-none disabled:opacity-40"
+              className="w-full rounded-lg border border-[#2a2a2a] bg-[#1c1c1c] px-3.5 py-2.5 text-[12px] font-mono text-[#ebebeb] placeholder:text-[#444444] outline-none focus:border-[#3d3d3d] focus:ring-1 focus:ring-[rgba(86,69,212,0.3)] transition-colors resize-none disabled:opacity-40"
             />
           </div>
 

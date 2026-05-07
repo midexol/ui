@@ -15,10 +15,10 @@ function AssetRow({ b }: { b: Balance }) {
   const isNative = b.assetType === "native";
 
   return (
-    <div className="flex items-center justify-between py-2.5 border-b border-[#2a2a2a] last:border-0">
-      <div className="flex items-center gap-2.5">
+    <div className="flex items-center justify-between py-3.5 border-b border-[#2a2a2a] last:border-0">
+      <div className="flex items-center gap-3.5">
         <div
-          className={`w-7 h-7 rounded-full flex items-center justify-center text-[10px] font-bold shrink-0 ${
+          className={`w-9 h-9 rounded-full flex items-center justify-center text-[11px] font-bold shrink-0 ${
             isNative
               ? "bg-[rgba(20,184,166,0.1)] text-[#14b8a6]"
               : "bg-[rgba(168,85,247,0.1)] text-[#a855f7]"
@@ -27,17 +27,17 @@ function AssetRow({ b }: { b: Balance }) {
           {symbol.slice(0, 2)}
         </div>
         <div className="flex flex-col gap-0.5">
-          <span className="text-[12px] font-medium text-[#ebebeb]">
+          <span className="text-[13px] font-medium text-[#ebebeb]">
             {symbol}
           </span>
           {b.assetIssuer ? (
             <span data-address>{truncateAddress(b.assetIssuer, 8, 4)}</span>
           ) : (
-            <span className="text-[10px] text-[#555555]">Stellar Lumens</span>
+            <span className="text-[11px] text-[#555555]">Stellar Lumens</span>
           )}
         </div>
       </div>
-      <span className="text-[12px] font-medium text-[#ebebeb] tabular-nums">
+      <span className="text-[13px] font-medium text-[#ebebeb] tabular-nums">
         {parseFloat(b.balance).toLocaleString(undefined, {
           minimumFractionDigits: 2,
           maximumFractionDigits: 4,
@@ -62,7 +62,7 @@ export function BalanceList() {
         </div>
         <CardDescription>Token balances</CardDescription>
       </CardHeader>
-      <CardContent className="p-0 px-4">
+      <CardContent className="p-0 px-5">
         {isLoadingAccount ? (
           <div className="py-4 space-y-3">
             {[1, 2, 3].map((i) => (

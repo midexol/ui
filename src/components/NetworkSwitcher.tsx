@@ -17,7 +17,7 @@ export function NetworkSwitcher() {
   return (
     <DropdownMenu.Root>
       <DropdownMenu.Trigger asChild>
-        <button className="inline-flex items-center gap-1.5 h-7 px-3 rounded-md bg-[#1c1c1c] border border-[#2a2a2a] hover:border-[#3d3d3d] transition-colors cursor-pointer text-[11px] text-[#999999] focus-visible:outline-none">
+        <button className="inline-flex items-center gap-2 h-8 px-3.5 rounded-lg bg-[#1c1c1c] border border-[#2a2a2a] hover:border-[#3d3d3d] transition-colors cursor-pointer text-[12px] text-[#999999] focus-visible:outline-none">
           <span
             className={cn(
               "w-1.5 h-1.5 rounded-full shrink-0",

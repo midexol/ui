@@ -34,11 +34,11 @@ export function TopBar({ active }: { active: NavSection }) {
           </button>
         </div>
       )}
-      <header className="h-12 flex items-center justify-between px-5 border-b border-[#2a2a2a] bg-[#141414] shrink-0">
-        <span className="text-[12px] font-semibold text-[#ebebeb]">
+      <header className="h-14 flex items-center justify-between px-6 border-b border-[#2a2a2a] bg-[#141414] shrink-0">
+        <span className="text-[14px] font-semibold text-[#ebebeb]">
           {LABELS[active]}
         </span>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2.5">
           <NetworkSwitcher />
           <WalletConnectButton />
         </div>
