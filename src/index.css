@@ -2,20 +2,16 @@
 
 @import "tailwindcss";
 
-@source "./**/*.{ts,tsx}";
-@source "../index.html";
-@source "../node_modules/@hugeicons/react/dist/**/*.js";
-
 /* ─────────────────────────────────────────────────────────
    BRAND & DESIGN TOKENS
    Edit values here — they propagate to every component.
    Components reference these as: bg-brand, text-ink, border-line, etc.
 ───────────────────────────────────────────────────────── */
-@theme {
+:root {
   /* ── Brand ── */
-  --color-brand: #b97015; /* — change this to rebrand */
-  --color-brand-hover: #945014; /* brand hover/pressed state */
-  --color-brand-dim: rgba(185, 112, 21, 0.12); /* brand tinted background */
+  --color-brand: #55852b; /* — change this to rebrand */
+  --color-brand-hover: #426625; /* brand hover/pressed state */
+  --color-brand-dim: #e5f2d5; /* brand tinted background */
 
   /* ── Surfaces ── */
   --color-base: #0d0d0d; /* page background */

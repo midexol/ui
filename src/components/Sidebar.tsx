@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 import { useSorokit } from "@/context/SorokitProvider";
 import { AccountCardCompact } from "@/components/AccountCard";
-import { HugeiconsIcon } from "@hugeicons/react";
+import { HugeiconsIcon, type IconSvgElement } from "@hugeicons/react";
 import {
   Wallet01Icon,
   User02Icon,
@@ -17,7 +17,7 @@ export type NavSection =
   | "soroban"
   | "network";
 
-const NAV: { id: NavSection; label: string; icon: object }[] = [
+const NAV: { id: NavSection; label: string; icon: IconSvgElement }[] = [
   { id: "wallet", label: "Wallet", icon: Wallet01Icon },
   { id: "account", label: "Account", icon: User02Icon },
   {
