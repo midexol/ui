@@ -19,11 +19,11 @@ function BalanceRow({ cb }: { cb: ClaimableBalance }) {
     setClaimError(null);
     try {
       const { error } = await getClient().account.claimBalance(cb.id);
-      if (error) {
+      if (!error) {
+        setClaimed(true);
+      } else {
         setClaimError(error);
-        return;
       }
-      setClaimed(true);
     } finally {
       setClaiming(false);
     }
@@ -59,11 +59,14 @@ function BalanceRow({ cb }: { cb: ClaimableBalance }) {
             size="sm"
             loading={claiming}
             onClick={handleClaim}
+            className="shrink-0"
           >
             Claim
           </Button>
           {claimError && (
-            <p className="text-[12px] text-red text-right">{claimError}</p>
+            <span className="text-[10px] text-red max-w-[150px] text-right truncate">
+              {claimError}
+            </span>
           )}
         </div>
       )}

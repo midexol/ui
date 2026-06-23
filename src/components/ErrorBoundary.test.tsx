@@ -1,0 +1,41 @@
+import { render, screen, fireEvent } from "@testing-library/react";
+import { describe, it, expect, vi } from "vitest";
+import { ErrorBoundary } from "./ErrorBoundary";
+
+const ThrowError = () => {
+  throw new Error("Test error!");
+};
+
+describe("ErrorBoundary", () => {
+  it("renders custom fallback prop and passes error and reset function", () => {
+    const fallbackSpy = vi.fn().mockImplementation((error, reset) => (
+      <div>
+        <p>Custom Fallback</p>
+        <p>{error.message}</p>
+        <button onClick={reset}>Reset Custom</button>
+      </div>
+    ));
+
+    // Suppress console.error for expected thrown error
+    const consoleSpy = vi.spyOn(console, "error").mockImplementation(() => {});
+
+    render(
+      <ErrorBoundary fallback={fallbackSpy}>
+        <ThrowError />
+      </ErrorBoundary>
+    );
+
+    expect(fallbackSpy).toHaveBeenCalled();
+    expect(screen.getByText("Custom Fallback")).toBeInTheDocument();
+    expect(screen.getByText("Test error!")).toBeInTheDocument();
+
+    const resetBtn = screen.getByText("Reset Custom");
+    expect(resetBtn).toBeInTheDocument();
+
+    // Reset should be callable and reset the error state (though it will just throw again because we still render ThrowError)
+    // but we can verify it doesn't crash.
+    fireEvent.click(resetBtn);
+
+    consoleSpy.mockRestore();
+  });
+});

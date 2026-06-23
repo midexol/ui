@@ -8,8 +8,9 @@ export function cn(...inputs: ClassValue[]) {
 /** Truncate a Stellar address or tx hash for display */
 export function truncateAddress(address: string, start = 6, end = 4): string {
   if (!address) return "";
-  if (address.length <= start + end) return address;
-  return `${address.slice(0, start)}...${address.slice(-end)}`;
+  const chars = Array.from(address);
+  if (chars.length <= start + end) return address;
+  return `${chars.slice(0, start).join("")}...${chars.slice(-end).join("")}`;
 }
 
 export function friendlyError(message: string): string {
