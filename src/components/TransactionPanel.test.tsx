@@ -1,4 +1,4 @@
-import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { TransactionPanel } from "./TransactionPanel";
 import { getClient } from "@/lib/client";
@@ -15,10 +15,10 @@ vi.mock("@/lib/client", () => ({
 describe("TransactionPanel", () => {
   beforeEach(() => {
     vi.clearAllMocks();
-    (useSorokit as any).mockReturnValue({
+    vi.mocked(useSorokit).mockReturnValue({
       address: "GABC",
       isConnected: true,
-    });
+    } as unknown as ReturnType<typeof useSorokit>);
   });
 
   it("handles loading, success, and error states", async () => {
@@ -28,11 +28,11 @@ describe("TransactionPanel", () => {
       });
     });
 
-    (getClient as any).mockReturnValue({
+    vi.mocked(getClient).mockReturnValue({
       transaction: {
         submit: mockSubmit,
       },
-    });
+    } as unknown as ReturnType<typeof getClient>);
 
     render(<TransactionPanel />);
 
@@ -64,11 +64,11 @@ describe("TransactionPanel", () => {
   it("handles error state", async () => {
     const mockSubmit = vi.fn().mockResolvedValue({ data: null, error: "Insufficient balance" });
 
-    (getClient as any).mockReturnValue({
+    vi.mocked(getClient).mockReturnValue({
       transaction: {
         submit: mockSubmit,
       },
-    });
+    } as unknown as ReturnType<typeof getClient>);
 
     render(<TransactionPanel />);
 

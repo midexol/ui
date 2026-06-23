@@ -1,4 +1,4 @@
-import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { ClaimableBalanceCard } from "./ClaimableBalanceCard";
 import { getClient } from "@/lib/client";
@@ -18,10 +18,10 @@ describe("ClaimableBalanceCard", () => {
   });
 
   it("renders an error message and re-enables button on claim failure, shows Claimed badge on success", async () => {
-    (useSorokit as any).mockReturnValue({
+    vi.mocked(useSorokit).mockReturnValue({
       address: "GABC123",
       isConnected: true,
-    });
+    } as unknown as ReturnType<typeof useSorokit>);
 
     const mockClaimBalance = vi.fn()
       .mockResolvedValueOnce({ data: null, error: "Network error" }) // Failure first
@@ -40,17 +40,17 @@ describe("ClaimableBalanceCard", () => {
       error: null,
     });
 
-    (getClient as any).mockReturnValue({
+    vi.mocked(getClient).mockReturnValue({
       account: {
         getClaimableBalances: mockGetClaimableBalances,
         claimBalance: mockClaimBalance,
       },
-    });
+    } as unknown as ReturnType<typeof getClient>);
 
     render(<ClaimableBalanceCard />);
 
     // Wait for the balance to load
-    expect(await screen.findByText("10")).toBeInTheDocument();
+    expect(await screen.findByText("10.00")).toBeInTheDocument();
 
     const claimButton = screen.getByRole("button", { name: "Claim" });
     
