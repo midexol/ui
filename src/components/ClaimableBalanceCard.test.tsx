@@ -18,10 +18,10 @@ describe("ClaimableBalanceCard", () => {
   });
 
   it("renders an error message and re-enables button on claim failure, shows Claimed badge on success", async () => {
-    (useSorokit as any).mockReturnValue({
+    vi.mocked(useSorokit).mockReturnValue({
       address: "GABC123",
       isConnected: true,
-    });
+    } as unknown as ReturnType<typeof useSorokit>);
 
     const mockClaimBalance = vi.fn()
       .mockResolvedValueOnce({ data: null, error: "Network error" }) // Failure first
@@ -40,12 +40,12 @@ describe("ClaimableBalanceCard", () => {
       error: null,
     });
 
-    (getClient as any).mockReturnValue({
+    vi.mocked(getClient).mockReturnValue({
       account: {
         getClaimableBalances: mockGetClaimableBalances,
         claimBalance: mockClaimBalance,
       },
-    });
+    } as unknown as ReturnType<typeof getClient>);
 
     render(<ClaimableBalanceCard />);
 

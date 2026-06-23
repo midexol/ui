@@ -13,11 +13,11 @@ describe("AccountCard", () => {
   });
 
   it("renders a skeleton during loading", () => {
-    (useSorokit as any).mockReturnValue({
+    vi.mocked(useSorokit).mockReturnValue({
       address: "GABC",
       account: null,
       isLoadingAccount: true,
-    });
+    } as unknown as ReturnType<typeof useSorokit>);
 
     const { container } = render(<AccountCard />);
     // Skeleton renders when isLoadingAccount is true. We can check for a div with animate-pulse
@@ -28,14 +28,14 @@ describe("AccountCard", () => {
   });
 
   it("renders account fields after load", () => {
-    (useSorokit as any).mockReturnValue({
+    vi.mocked(useSorokit).mockReturnValue({
       address: "GABC",
       account: {
         sequence: "123456",
         subentryCount: 2,
       },
       isLoadingAccount: false,
-    });
+    } as unknown as ReturnType<typeof useSorokit>);
 
     render(<AccountCard />);
     
@@ -46,11 +46,11 @@ describe("AccountCard", () => {
   });
 
   it("returns null when no address is present", () => {
-    (useSorokit as any).mockReturnValue({
+    vi.mocked(useSorokit).mockReturnValue({
       address: null,
       account: null,
       isLoadingAccount: false,
-    });
+    } as unknown as ReturnType<typeof useSorokit>);
 
     const { container } = render(<AccountCard />);
     expect(container).toBeEmptyDOMElement();
