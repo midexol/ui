@@ -31,3 +31,6 @@ jobs:
 
       - name: Verify Exports
         run: npm run test:exports
+
+      - name: Run tests
+        run: npm test
