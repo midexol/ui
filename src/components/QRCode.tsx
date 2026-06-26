@@ -44,7 +44,6 @@ export function QRCode({
   const [renderError, setRenderError] = useState(false);
   const [prevProps, setPrevProps] = useState({ value, size, canvasBackground, canvasForeground });
 
-  /* eslint-disable react-hooks/refs */
   if (
     prevProps.value !== value ||
     prevProps.size !== size ||
@@ -54,8 +53,6 @@ export function QRCode({
     setPrevProps({ value, size, canvasBackground, canvasForeground });
     setRenderError(false);
   }
-  /* eslint-enable react-hooks/refs */
-
   useEffect(() => {
     if (renderError || !value) return;
 

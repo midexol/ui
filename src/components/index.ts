@@ -13,12 +13,6 @@ export {
 export { Badge } from "./ui/Badge";
 export { Input } from "./ui/Input";
 export { Skeleton, SkeletonRow, SkeletonCard, AssetRowSkeleton } from "./ui/Skeleton";
-export {
-  Skeleton,
-  SkeletonRow,
-  SkeletonCard,
-  AssetRowSkeleton,
-} from "./ui/Skeleton";
 
 // Error handling
 export { ErrorBoundary } from "./ErrorBoundary";
