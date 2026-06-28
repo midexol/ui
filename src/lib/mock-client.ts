@@ -1,4 +1,5 @@
-import { SorokitClient, NetworkInfo, NetworkName, Balance, AccountData, Transaction, ClaimableBalance, ContractEvent } from './client';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { SorokitClient, NetworkName, Balance, AccountData, ClaimableBalance } from './client';
 import { deterministicMock } from './deterministic-mock';
 
 // Valid Stellar testnet address (56 characters)

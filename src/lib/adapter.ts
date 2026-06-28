@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 interface SorobanClient {
   invokeContract(params: { contractId: string; method: string; params: any[] }): Promise<any>;
   getEvents(params: { contractId: string; limit: number }): Promise<any[]>;
