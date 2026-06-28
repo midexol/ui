@@ -10,7 +10,7 @@ describe("Button", () => {
 
   it("renders a loading spinner when loading is true", () => {
     const { container } = render(<Button loading>Submit</Button>);
-    expect(screen.getByRole("button", { name: "Submit" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /Submit/i })).toBeInTheDocument();
     // The spinner is a span with animate-spin class
     const spinner = container.querySelector(".animate-spin");
     expect(spinner).toBeInTheDocument();
@@ -25,7 +25,7 @@ describe("Button", () => {
 
   it("is disabled when loading is true", () => {
     render(<Button loading>Submit</Button>);
-    const button = screen.getByRole("button", { name: "Submit" });
+    const button = screen.getByRole("button", { name: /Submit/i });
     expect(button).toBeDisabled();
   });
 

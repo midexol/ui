@@ -1,4 +1,7 @@
-import { SorobanClient } from '@stellar/stellar-sdk';
+interface SorobanClient {
+  invokeContract(params: { contractId: string; method: string; params: any[] }): Promise<any>;
+  getEvents(params: { contractId: string; limit: number }): Promise<any[]>;
+}
 
 export interface ClientAdapterConfig {
   walletAdapter?: any; // Freighter, xBull, Albedo
