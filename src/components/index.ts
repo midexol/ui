@@ -55,6 +55,7 @@ export { useSorokit } from "../context/useSorokit";
 
 // Types
 export type {
+  SorokitClient,
   AccountData,
   Balance,
   Transaction,

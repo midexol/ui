@@ -1,4 +1,4 @@
-import { useState, type ComponentType } from "react";
+import { useState, useEffect, type ComponentType } from "react";
 import { Sidebar, type NavSection } from "@/components/Sidebar";
 import { TopBar } from "@/components/TopBar";
 import { NetworkBanner } from "@/components/NetworkBanner";
@@ -17,8 +17,18 @@ const SCREENS: Record<NavSection, ComponentType> = {
 };
 
 export function Dashboard() {
-  const [active, setActive] = useState<NavSection>("wallet");
+  const [active, setActive] = useState<NavSection>(() => {
+    const saved = localStorage.getItem("sorokit-active-nav");
+    if (saved && saved in SCREENS) {
+      return saved as NavSection;
+    }
+    return "wallet";
+  });
   const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  useEffect(() => {
+    localStorage.setItem("sorokit-active-nav", active);
+  }, [active]);
 
   const ActiveScreen = SCREENS[active];
 

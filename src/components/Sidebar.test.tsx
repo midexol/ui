@@ -30,6 +30,15 @@ describe("Sidebar", () => {
     expect(onNavigate).toHaveBeenCalledWith("account");
   });
 
+  it("does not call onNavigate but calls onClose when tapping the active nav item", () => {
+    render(
+      <Sidebar active="wallet" onNavigate={onNavigate} open={true} onClose={onClose} />,
+    );
+    fireEvent.click(screen.getByRole("button", { name: /wallet/i }));
+    expect(onNavigate).not.toHaveBeenCalled();
+    expect(onClose).toHaveBeenCalled();
+  });
+
   it("calls onNavigate with each available section", () => {
     render(
       <Sidebar active="wallet" onNavigate={onNavigate} open={false} onClose={onClose} />,

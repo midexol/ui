@@ -43,6 +43,10 @@ export function Sidebar({ active, onNavigate, open, onClose }: SidebarProps) {
   const triggerRef = useRef<HTMLElement | null>(null);
 
   function handleNav(id: NavSection) {
+    if (active === id) {
+      onClose();
+      return;
+    }
     onNavigate(id);
     onClose();
   }
@@ -176,7 +180,7 @@ export function Sidebar({ active, onNavigate, open, onClose }: SidebarProps) {
                   icon={item.icon}
                   size={16}
                   color="currentColor"
-                  strokeWidth={active === item.id ? 2 : 1.5}
+                  strokeWidth={1.5}
                   className={cn(
                     "shrink-0",
                     active === item.id ? "text-brand" : "",
